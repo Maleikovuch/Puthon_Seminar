@@ -3,7 +3,7 @@
 # (для продвинутых - с файлом, вариант минимум - ввести позиции в консоли) -2 -1 0 1 2 Позиции: 0,1 -> 2
 
 
-n = int(input('Введите количество элементов '))
+n = int(input('Введите количество элементов списка: '))
 
 # list = []
 # for i in range(-n, n):
@@ -11,14 +11,22 @@ n = int(input('Введите количество элементов '))
 # print(list)
 
 
-h=list(range(-n,n))
-print(h)
+my_list = list(range(-n, n))
+print(f'Заданный список -', my_list)
 
-with open("file.txt", "r") as file:
-    s=file.read().splitlines()                   #переход на новую строку не используем (readlines нельзя), #print(s)
-    print(list(map(int, s)))                     #print(s)  result = list(map(int, s))    print(result)
- 
-     
- 
+# s = file.read().splitlines()                      # переход на новую строку не используем (readlines нельзя),
+# print(list(map(int, s)))                          # print(s)  result = list(map(int, s))    print(result); выведет в виде [0, 1],
+                                                     
+                                                    #поменяется только отображение вывода, сам тип не изменится
 
+# for i in s:                                       # выведет в виде     0
+#     print(i)                                      #                    1,  то есть выведет каждый элемент по отдельности
 
+with open("position.txt", "r") as file:
+    s = list(map(int, file.readlines()))            #здесь уже поменяли именно тип и вывели его уже измененный
+print(f'Позиции из файла - ', s)                                              
+
+mult = 1
+for i in range(len(s)):
+    mult *= my_list[s[i]]
+print(f'Произведение элементов на указанных позициях в файле position.txt ->', mult)
