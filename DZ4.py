@@ -15,7 +15,7 @@ my_list = list(range(-n, n+1))
 print(f'Заданный список -', my_list)
 
 # pos = file.read().splitlines()                      # переход на новую строку не используем (readlines нельзя),
-# print(list(map(int, s)))                            # print(s)  result = list(map(int, s))    print(result); выведет в виде [0, 1],
+# print(list(map(int, pos)))                            # print(s)  result = list(map(int, s))    print(result); выведет в виде [0, 1],
                                                      
                                                     #поменяется только отображение вывода, сам тип не изменится
 
