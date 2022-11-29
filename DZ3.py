@@ -1,24 +1,24 @@
-# Задайте список из n чисел последовательности (1+1/n)^n и выведите на экран их сумму.
+# 3'. Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу между максимальным и минимальным значением дробной части элементов.
 
-# Пример:
+# *Пример:*
+# - [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 
-# - Для n = 6: [2.0, 2.25, 2.37037037037037, 2.44140625, 2.4883199999999994, 2.5216263717421135]
+# lst = list(map(float, input("Введите числа через пробел:").split()))
+# print(lst)
 
-n = int(input('Введите количество чисел в списке '))
-
-list = []
-for i in range(1, n+1):
-    i = (1+1/i)**i
-    list.append(i)
+import random
+list = [round(random.uniform(1.10, 10.05),2) for i in range(5)] 
 print(list)
-# sum=0
-# for i in list:
-#     sum = sum +i
-# print (f'Сумма чисел из списка ->', sum)
 
-sum_numbers = sum(list)
-print(f'Сумма чисел из списка ->', sum_numbers)
+new_list=[]
+res=0
+for i in list:
+    i = round(i - int(i),2)
+    new_list.append(i)
+print(new_list)                                 # для проверки распечатаем
+res = round(max(new_list)-min(new_list),2)
+print(res)
 
-list=[(1+1/i)**i for i in range(1, n+1)]
-print(list)
-print(sum(list))
+# print(round(max(new_list)-min(new_list),2))
+
+
