@@ -1,35 +1,24 @@
-# 5'. Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.(Дополнительно)
+# 5. Даны два файла, в каждом из которых находится запись многочлена. Задача - сформировать файл, содержащий сумму многочленов.
 
-# *Пример:*
+# В file1.txt :
+# 2*x**2 + 4*x + 5
 
-# - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21] [Негафибоначчи]
+# В file2.txt:
+# 4*x**2 + 1*x + 4
 
-n = int(input('Введите число: '))
+# Результирующий файл:
+# 6*x**2 + 5*x + 9
 
-# def fib(n):
-#     if n in [1,2]:
-#         return 1
-#     else:
-#         return fib(n-2)+fib(n-1)                # фибоначчи
-# list=[]
-# for i in range(1,n+1):
-#     list.append(fib(i))
-# print(list)
+import sympy
 
-# fib = lambda n: fib(n - 1) + fib(n - 2) if n > 2 else 1   # в одну строку поиск числа
-# print(fib(n))
+with open('file1.txt', 'r') as data:
+    poly1 = data.readline()
+with open('file2.txt', 'r') as data:
+    poly2 = data.readline()
 
+poly_sum = str(sympy.simplify(f'{poly1} + {poly2}'))
 
+with open('file_res.txt', 'w') as data:
+    data.write(poly_sum)
 
-fib = []
-a, b = 1, 1
-for i in range(n):
-    fib.append(a)                                  # негафибоначчи
-    a, b = b, a + b
-
-a, b = 0, 1
-for i in range (n+1):
-    fib.insert(0, a)
-    a, b = b, a - b
-print(fib)
-
+# print(poly_sum)
